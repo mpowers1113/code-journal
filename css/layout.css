@@ -2,10 +2,15 @@
   display: none !important;
 }
 
+body {
+  background-color: #f0f0f0;
+}
+
 .container {
   max-width: 575px;
   margin: 0 auto;
   padding: 0 1.5rem;
+  background-color: #f0f0f0;
 }
 
 .row {
