@@ -10,6 +10,7 @@ var $journalList = document.querySelector('.journal-list');
 var $entriesButton = document.querySelector('.entries-button');
 var $entryForm = document.querySelectorAll('.entry-form');
 var $entriesHeader = document.querySelector('.entries-header');
+var $entriesList = document.querySelector('.entries');
 
 // ----------Toggle New Entries ----------
 
@@ -21,6 +22,7 @@ function toggleNewEntries(event) {
     for (var i = 0; i < $entryForm.length; i++) {
       var $eachEntryForm = $entryForm[i];
       $eachEntryForm.className = 'column-full entry-form';
+      $entriesList.className = 'column-full entries hidden';
       $entriesHeader.className = 'column-full entries-header hidden';
     }
   } else {
@@ -28,6 +30,7 @@ function toggleNewEntries(event) {
       var $eachEntryForm2 = $entryForm[j];
       $eachEntryForm2.className = 'column-full entry-form hidden';
       $entriesHeader.className = 'column-full entries-header';
+      $entriesList.className = 'column-full entries';
     }
   }
 }
