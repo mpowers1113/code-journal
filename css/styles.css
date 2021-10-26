@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;700;800;900&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+img {
+  width: 100%;
+  padding-bottom: 1rem;
+}
+
+input {
+  width: 100%;
+  height: 2rem;
+  margin: 0.75rem 0;
+  border: 2px solid #c5c5c5;
+  border-radius: 0.2rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: #562b82;
+}
+
+textarea {
+  width: 100%;
+  border: 2px solid #c5c5c5;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #562b82;
+}
+
+.notes div {
+  padding: 0.5rem 0;
+}
+
+header {
+  background-color: #562b82;
+}
+
+header .container {
+  background-color: transparent;
+}
+
+header h4 {
+  color: white;
+  padding: 1rem 0;
+  margin: 0;
+}
+
+label {
+  font-weight: 600;
+}
+
+.submit-button {
+  background-color: #562b82;
+  color: white;
+  width: 4rem;
+  height: 2rem;
+  border-radius: 0.25rem;
+  border: none;
+}
+
+.button {
+  text-align: right;
+}
