@@ -19,7 +19,6 @@ $photoUrlInput.addEventListener('change', photoInputChangeHandler);
 // --------Form inputs---------------------
 
 function formSubmitHandler(event) {
-  event.preventDefault();
   var formSubmissionData = {
     id: data.nextEntryId,
     title: $title.value,
