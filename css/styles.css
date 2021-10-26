@@ -66,3 +66,54 @@ label {
 .button {
   text-align: right;
 }
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+  padding: 1rem 0;
+}
+
+.entries {
+  background-color: #f0f0f0;
+}
+
+.entries-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.no-entries {
+  text-align: center;
+}
+
+.entries img {
+  width: 100%;
+  border-radius: 0.5rem;
+  padding-bottom: 0;
+}
+
+button {
+  background-color: #562b82;
+  color: white;
+  width: 4rem;
+  height: 2rem;
+  border-radius: 0.25rem;
+  border: none;
+}
+
+i {
+  cursor: pointer;
+  padding: 1rem 1rem 1rem 1rem;
+  font-size: medium;
+}
+
+.icon {
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}

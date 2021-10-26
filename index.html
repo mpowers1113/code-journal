@@ -23,14 +23,14 @@
     </div>
   </header>
   <main>
-    <div class="container">
+    <div class="container" id="">
       <div class="row">
-        <div class="column-full">
+        <div class="column-full entry-form hidden">
           <h1>New Entry</h1>
         </div>
       </div>
       <div class="row">
-        <div data-view="entry-form" class="column-full">
+        <div data-view="entry-form" id="" class="entry-form column-full hidden">
           <form action="">
             <div class="row">
               <div class="column-half">
@@ -70,7 +70,29 @@
           </form>
         </div>
       </div>
+      <div class="container">
+        <div class="row">
+          <div class="column-full entries-header">
+            <div>
+              <h1>Entries</h1>
+            </div>
+            <button class="entries-button">NEW</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full no-entries hidden">
+            <p>No entries have been recorded.</p>
 
+          </div>
+        </div>
+        <div class="row">
+          <div data-view="entries" class="column-full entries">
+            <ul class="journal-list">
+            </ul>
+          </div>
+        </div>
+
+      </div>
     </div>
   </main>
   <script src="js/data.js"></script>
