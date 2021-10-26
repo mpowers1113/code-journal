@@ -93,10 +93,6 @@ function renderJournalEntries(userData) {
   $titleH1.textContent = userData.title;
   $newRowTwo.appendChild($titleH1);
 
-  var $icon = document.createElement('i');
-  $icon.className = 'fas fa-pen edit';
-  $newRowTwo.appendChild($icon);
-
   var $newRowThree = document.createElement('div');
   $newRowThree.className = 'row';
   $newColumnTwo.appendChild($newRowThree);
