@@ -8,9 +8,7 @@ var $title = document.querySelector('#title');
 var $textarea = document.querySelector('textarea');
 var $journalList = document.querySelector('.journal-list');
 var $entriesButton = document.querySelector('.entries-button');
-var $entryForm = document.querySelectorAll('.entry-form');
-var $entriesHeader = document.querySelector('.entries-header');
-var $entriesList = document.querySelector('.entries');
+var $dataViewEls = document.querySelectorAll('[data-view]');
 
 // ----------Toggle New Entries ----------
 
@@ -19,18 +17,14 @@ var newEntryVisible = true;
 function toggleNewEntries(event) {
   newEntryVisible = !newEntryVisible;
   if (newEntryVisible === false) {
-    for (var i = 0; i < $entryForm.length; i++) {
-      var $eachEntryForm = $entryForm[i];
-      $eachEntryForm.className = 'column-full entry-form';
-      $entriesList.className = 'column-full entries hidden';
-      $entriesHeader.className = 'column-full entries-header hidden';
-    }
-  } else {
-    for (var j = 0; j < $entryForm.length; j++) {
-      var $eachEntryForm2 = $entryForm[j];
-      $eachEntryForm2.className = 'column-full entry-form hidden';
-      $entriesHeader.className = 'column-full entries-header';
-      $entriesList.className = 'column-full entries';
+    for (var i = 0; i < $dataViewEls.length; i++) {
+      var $eachDataViewEl = $dataViewEls[i];
+      var $eachDataViewElClass = $dataViewEls[i].getAttribute('class');
+      if ($eachDataViewElClass === 'row hidden') {
+        $eachDataViewEl.setAttribute('class', 'row');
+      } else {
+        $eachDataViewEl.className = 'row hidden';
+      }
     }
   }
 }
@@ -58,7 +52,7 @@ function formSubmitHandler(event) {
   };
   data.nextEntryId++;
   data.entries.unshift(formSubmissionData);
-  $journalList.prepend(renderJournalEntries(formSubmissionData));
+  $journalList.prepend(renderJournalEntry(formSubmissionData));
   $imgElement.setAttribute('src', './images/placeholder-image-square.jpg');
   $form.reset();
   toggleNewEntries();
@@ -68,7 +62,7 @@ $form.addEventListener('submit', formSubmitHandler);
 
 // ----------Render Journal Entries--------------
 
-function renderJournalEntries(userData) {
+function renderJournalEntry(userData) {
 
   var $newLi = document.createElement('li');
   $newLi.setAttribute('id', userData.id);
@@ -119,7 +113,7 @@ var dataEntries = data.entries;
 function renderDOMContent() {
   for (var i = 0; i < dataEntries.length; i++) {
     var eachEntry = dataEntries[i];
-    var $entry = renderJournalEntries(eachEntry);
+    var $entry = renderJournalEntry(eachEntry);
     $journalList.append($entry);
   }
 }
