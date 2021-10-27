@@ -107,9 +107,8 @@ function renderJournalEntries(userData) {
 
 // ------------DOM Content Loaded--------------------
 
-switchView(data.view);
-
 function renderDOMContent() {
+  switchView(data.view);
   for (var i = 0; i < data.entries.length; i++) {
     var eachEntry = data.entries[i];
     var $entry = renderJournalEntries(eachEntry);
