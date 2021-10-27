@@ -8,23 +8,18 @@ var $title = document.querySelector('#title');
 var $textarea = document.querySelector('textarea');
 var $journalList = document.querySelector('.journal-list');
 var $entriesButton = document.querySelector('.entries-button');
-var $dataViewEls = document.querySelectorAll('[data-view]');
+var $submitButton = document.querySelector('.submit-button');
+var $dataViews = document.querySelectorAll('[data-view]');
 
 // ----------Toggle New Entries ----------
 
-var newEntryVisible = true;
-
 function toggleNewEntries(event) {
-  newEntryVisible = !newEntryVisible;
-  if (newEntryVisible === false) {
-    for (var i = 0; i < $dataViewEls.length; i++) {
-      var $eachDataViewEl = $dataViewEls[i];
-      var $eachDataViewElClass = $dataViewEls[i].getAttribute('class');
-      if ($eachDataViewElClass === 'row hidden') {
-        $eachDataViewEl.setAttribute('class', 'row');
-      } else {
-        $eachDataViewEl.className = 'row hidden';
-      }
+  var buttonViewVal = event.target.getAttribute('view');
+  for (var i = 0; i < $dataViews.length; i++) {
+    if (buttonViewVal === $dataViews[i].getAttribute('data-view')) {
+      $dataViews[i].className = 'row hidden';
+    } else {
+      $dataViews[i].className = 'row';
     }
   }
 }
@@ -52,17 +47,17 @@ function formSubmitHandler(event) {
   };
   data.nextEntryId++;
   data.entries.unshift(formSubmissionData);
-  $journalList.prepend(renderJournalEntry(formSubmissionData));
+  $journalList.prepend(renderJournalEntries(formSubmissionData));
   $imgElement.setAttribute('src', './images/placeholder-image-square.jpg');
   $form.reset();
-  toggleNewEntries();
 }
 
-$form.addEventListener('submit', formSubmitHandler);
+$submitButton.addEventListener('click', formSubmitHandler);
+$submitButton.addEventListener('click', toggleNewEntries);
 
 // ----------Render Journal Entries--------------
 
-function renderJournalEntry(userData) {
+function renderJournalEntries(userData) {
 
   var $newLi = document.createElement('li');
   $newLi.setAttribute('id', userData.id);
@@ -113,7 +108,7 @@ var dataEntries = data.entries;
 function renderDOMContent() {
   for (var i = 0; i < dataEntries.length; i++) {
     var eachEntry = dataEntries[i];
-    var $entry = renderJournalEntry(eachEntry);
+    var $entry = renderJournalEntries(eachEntry);
     $journalList.append($entry);
   }
 }

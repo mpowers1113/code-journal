@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="row hidden" data-view="entry-form">
-        <div class="column-full entry-form ">
+        <div class="column-full entry-form">
           <form action="">
             <div class="row">
               <div class="column-half">
@@ -63,7 +63,7 @@
             </div>
             <div class="row button">
               <div class="column-full">
-                <input type="submit" class="submit-button">
+                <button type="submit" class="submit-button" view="entry-form">Save</button>
               </div>
             </div>
           </form>
@@ -74,18 +74,18 @@
           <div>
             <h1>Entries</h1>
           </div>
-          <button class="entries-button">NEW</button>
+          <button class="entries-button" view="entries">NEW</button>
         </div>
       </div>
 
-      <!-- <div class="row" data-view="entries"> -->
-      <div class="column-full">
-        <ul class="journal-list entries">
-        </ul>
+      <div class="row" data-view="entries">
+        <div class="column-full">
+          <ul class="journal-list entries">
+          </ul>
+        </div>
       </div>
-    </div>
 
-    <!-- </div> -->
+    </div>
 
   </main>
   <script src="js/data.js"></script>
