@@ -24,13 +24,13 @@
   </header>
   <main>
     <div class="container">
-      <div class="row">
-        <div class="column-full">
+      <div class="row hidden" data-view="entry-form">
+        <div class="column-full entry-form">
           <h1>New Entry</h1>
         </div>
       </div>
-      <div class="row">
-        <div data-view="entry-form" class="column-full">
+      <div class="row hidden" data-view="entry-form">
+        <div class="column-full entry-form">
           <form action="">
             <div class="row">
               <div class="column-half">
@@ -63,15 +63,30 @@
             </div>
             <div class="row button">
               <div class="column-full">
-                <input type="submit" class="submit-button">
+                <button type="submit" class="submit-button nav" data-view="entry-form">SAVE</button>
               </div>
             </div>
-
           </form>
+        </div>
+      </div>
+      <div class="row" data-view="entries">
+        <div class="column-full entries-header">
+          <div>
+            <h1>Entries</h1>
+          </div>
+          <button class="entries-button nav" data-view="entries">NEW</button>
+        </div>
+      </div>
+
+      <div class="row" data-view="entries">
+        <div class="column-full">
+          <ul class="journal-list entries">
+          </ul>
         </div>
       </div>
 
     </div>
+
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
