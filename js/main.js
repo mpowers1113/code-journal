@@ -107,10 +107,11 @@ function renderJournalEntries(userData) {
 
 // ------------DOM Content Loaded--------------------
 
+switchView(data.view);
+
 function renderDOMContent() {
   for (var i = 0; i < data.entries.length; i++) {
     var eachEntry = data.entries[i];
-    switchView(data.view);
     var $entry = renderJournalEntries(eachEntry);
     $journalList.append($entry);
   }
