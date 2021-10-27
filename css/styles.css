@@ -55,6 +55,9 @@ label {
 }
 
 .submit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #562b82;
   color: white;
   width: 4rem;
@@ -98,6 +101,9 @@ li {
 }
 
 button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #562b82;
   color: white;
   width: 4rem;

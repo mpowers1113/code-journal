@@ -7,16 +7,15 @@ var $form = document.querySelector('form');
 var $title = document.querySelector('#title');
 var $textarea = document.querySelector('textarea');
 var $journalList = document.querySelector('.journal-list');
-var $entriesButton = document.querySelector('.entries-button');
 var $submitButton = document.querySelector('.submit-button');
 var $dataViews = document.querySelectorAll('[data-view]');
+var $navItems = document.querySelectorAll('.nav');
 
 // ----------Toggle New Entries ----------
 
-function toggleNewEntries(event) {
-  var buttonViewVal = event.target.getAttribute('view');
+function switchView(viewName) {
   for (var i = 0; i < $dataViews.length; i++) {
-    if (buttonViewVal === $dataViews[i].getAttribute('data-view')) {
+    if (viewName === $dataViews[i].getAttribute('data-view')) {
       $dataViews[i].className = 'row hidden';
     } else {
       $dataViews[i].className = 'row';
@@ -24,7 +23,13 @@ function toggleNewEntries(event) {
   }
 }
 
-$entriesButton.addEventListener('click', toggleNewEntries);
+function getViewName(event) {
+  var viewName = event.currentTarget.getAttribute('data-view');
+  data.view = viewName;
+  switchView(viewName);
+}
+
+$navItems.forEach(item => item.addEventListener('click', getViewName));
 
 // -------Photo Upload Preview -----------
 
@@ -53,7 +58,6 @@ function formSubmitHandler(event) {
 }
 
 $submitButton.addEventListener('click', formSubmitHandler);
-$submitButton.addEventListener('click', toggleNewEntries);
 
 // ----------Render Journal Entries--------------
 
@@ -103,11 +107,10 @@ function renderJournalEntries(userData) {
 
 // ------------DOM Content Loaded--------------------
 
-var dataEntries = data.entries;
-
 function renderDOMContent() {
-  for (var i = 0; i < dataEntries.length; i++) {
-    var eachEntry = dataEntries[i];
+  for (var i = 0; i < data.entries.length; i++) {
+    var eachEntry = data.entries[i];
+    switchView(data.view);
     var $entry = renderJournalEntries(eachEntry);
     $journalList.append($entry);
   }
