@@ -111,3 +111,7 @@ button {
   border-radius: 0.25rem;
   border: none;
 }
+
+form {
+  padding-bottom: 1rem;
+}
