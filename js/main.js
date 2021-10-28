@@ -50,7 +50,6 @@ function formSubmitHandler(event) {
     data.editing.image = $photoUrlInput.value;
     var editIndex = data.entries.findIndex(array => array.id === data.editing.id);
     data.entries[editIndex] = data.editing;
-    window.localStorage.setItem('submissionData', JSON.stringify(data));
     targetJournalEntry.replaceWith(renderJournalEntries(data.editing));
     data.editing = null;
 
@@ -152,12 +151,7 @@ function journalListClickHandler(event) {
         $textarea.value = eachDataEntry.notes;
         $photoUrlInput.value = eachDataEntry.image;
 
-        data.editing = {
-          id: eachDataEntry.id,
-          title: eachDataEntry.title,
-          notes: eachDataEntry.notes,
-          image: eachDataEntry.image
-        };
+        data.editing = eachDataEntry;
       }
     }
   }
