@@ -25,7 +25,6 @@ function deleteEntryHandler(event) {
   data.editing = null;
   hideModalHandler();
   switchView('entry-form');
-  // data.view = 'entries';
 }
 
 $deleteButton.addEventListener('click', deleteEntryHandler);
