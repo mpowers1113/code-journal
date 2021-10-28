@@ -44,6 +44,12 @@ header .container {
   background-color: transparent;
 }
 
+.header {
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
 header h4 {
   color: white;
   padding: 1rem 0;
