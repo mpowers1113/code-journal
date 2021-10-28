@@ -114,6 +114,10 @@ form {
   padding-bottom: 1rem;
 }
 
+i {
+  cursor: pointer;
+}
+
 .icon {
   justify-content: space-between;
   align-items: center;
