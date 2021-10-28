@@ -55,19 +55,12 @@ label {
 }
 
 .submit-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: #562b82;
   color: white;
   width: 4rem;
   height: 2rem;
   border-radius: 0.25rem;
   border: none;
-}
-
-.button {
-  text-align: right;
 }
 
 ul {
@@ -119,4 +112,62 @@ form {
 .icon {
   justify-content: space-between;
   align-items: center;
+}
+
+.overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.column {
+  flex-basis: 40%;
+  text-align: center;
+  border-radius: 1rem;
+  background-color: white;
+  padding: 2rem 2rem 1rem 2rem;
+}
+
+.column h2 {
+  margin-bottom: 2rem;
+}
+
+.modal {
+  justify-content: space-between;
+}
+
+.confirm {
+  background-color: tomato;
+  width: 5rem;
+  cursor: pointer;
+}
+
+.cancel {
+  cursor: pointer;
+  background-color: #b6b6b6;
+  width: 5rem;
+  color: #303030;
+}
+
+.button {
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.button span {
+  color: tomato;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.delete-entry-span {
+  cursor: pointer;
 }

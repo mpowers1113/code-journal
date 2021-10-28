@@ -10,6 +10,36 @@ var $journalList = document.querySelector('.journal-list');
 var $submitButton = document.querySelector('.submit-button');
 var $dataViews = document.querySelectorAll('[data-view]');
 var $navItems = document.querySelectorAll('.nav');
+var $deleteButton = document.querySelector('.confirm');
+var $cancelButton = document.querySelector('.cancel');
+var $deleteEntrySpan = document.querySelector('.delete-entry-span');
+var $confirmModalOverlay = document.querySelector('.overlay');
+
+// ------------Delete Entry------------------------
+
+function deleteEntryHandler(event) {
+  var deleteIndex = data.entries.findIndex(array => array.id === data.editing.id);
+  targetJournalEntry.remove();
+  data.entries.splice(deleteIndex, 1);
+  data.editing = null;
+  hideModalHandler();
+  switchView('entry-form');
+}
+
+$deleteButton.addEventListener('click', deleteEntryHandler);
+
+// ------------Delete Modal Toggle ---------------
+
+function toggleConfirmationModal(event) {
+  $confirmModalOverlay.className = 'overlay';
+}
+
+function hideModalHandler(event) {
+  $confirmModalOverlay.className = 'overlay hidden';
+}
+
+$deleteEntrySpan.addEventListener('click', toggleConfirmationModal);
+$cancelButton.addEventListener('click', hideModalHandler);
 
 // ----------Toggle New Entries ----------
 
@@ -21,11 +51,11 @@ function switchView(viewName) {
       $dataViews[i].className = 'row';
     }
   }
+  data.view = viewName;
 }
 
 function getViewName(event) {
   var viewName = event.currentTarget.getAttribute('data-view');
-  data.view = viewName;
   switchView(viewName);
 }
 
@@ -54,6 +84,7 @@ function formSubmitHandler(event) {
     data.editing = null;
 
   } else {
+    $deleteEntrySpan.className = 'delete-entry-span hidden';
     var formSubmissionData = {
       id: data.nextEntryId,
       title: $title.value,
@@ -146,6 +177,7 @@ function journalListClickHandler(event) {
     for (var i = 0; i < data.entries.length; i++) {
       var eachDataEntry = data.entries[i];
       if (Number(targetEntryId) === eachDataEntry.id) {
+        $deleteEntrySpan.className = 'delete-entry-span';
         $imgElement.setAttribute('src', eachDataEntry.image);
         $title.value = eachDataEntry.title;
         $textarea.value = eachDataEntry.notes;
