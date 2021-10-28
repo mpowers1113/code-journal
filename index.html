@@ -20,6 +20,9 @@
       <div class="column-full">
         <h4>Code Journal</h4>
       </div>
+
+
+
     </div>
   </header>
   <main>
@@ -31,6 +34,17 @@
       </div>
       <div class="row hidden" data-view="entry-form">
         <div class="column-full entry-form">
+
+          <div class="overlay hidden">
+            <div class="column">
+              <h2>Are you sure you'd like to delete this entry?</h2>
+              <div class="row modal">
+                <button class="cancel">CANCEL</button><button class="confirm">CONFIRM</button>
+              </div>
+
+            </div>
+          </div>
+
           <form action="">
             <div class="row">
               <div class="column-half">
@@ -62,9 +76,9 @@
               </div>
             </div>
             <div class="row button">
-              <div class="column-full">
-                <button type="submit" class="submit-button nav" data-view="entry-form">SAVE</button>
-              </div>
+              <span class="delete-entry-span hidden">Delete Entry</span>
+              <button type="submit" class="submit-button nav" data-view="entry-form">SAVE</button>
+
             </div>
           </form>
         </div>
