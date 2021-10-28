@@ -38,22 +38,33 @@ function photoInputChangeHandler(event) {
   $imgElement.setAttribute('src', submittedImg);
 }
 
-$photoUrlInput.addEventListener('change', photoInputChangeHandler);
+$photoUrlInput.addEventListener('input', photoInputChangeHandler);
 
 // --------Form inputs---------------------
 
 function formSubmitHandler(event) {
   event.preventDefault();
-  var formSubmissionData = {
-    id: data.nextEntryId,
-    title: $title.value,
-    notes: $textarea.value,
-    image: $photoUrlInput.value
-  };
-  data.nextEntryId++;
-  data.entries.unshift(formSubmissionData);
-  $journalList.prepend(renderJournalEntries(formSubmissionData));
-  $imgElement.setAttribute('src', './images/placeholder-image-square.jpg');
+  if (data.editing !== null) {
+    data.editing.title = $title.value;
+    data.editing.notes = $textarea.value;
+    data.editing.image = $photoUrlInput.value;
+    var editIndex = data.entries.findIndex(array => array.id === data.editing.id);
+    data.entries[editIndex] = data.editing;
+    targetJournalEntry.replaceWith(renderJournalEntries(data.editing));
+    data.editing = null;
+
+  } else {
+    var formSubmissionData = {
+      id: data.nextEntryId,
+      title: $title.value,
+      notes: $textarea.value,
+      image: $photoUrlInput.value
+    };
+    data.nextEntryId++;
+    data.entries.unshift(formSubmissionData);
+    $journalList.prepend(renderJournalEntries(formSubmissionData));
+    $imgElement.setAttribute('src', './images/placeholder-image-square.jpg');
+  }
   $form.reset();
 }
 
@@ -89,6 +100,12 @@ function renderJournalEntries(userData) {
   $titleH1.textContent = userData.title;
   $newRowTwo.appendChild($titleH1);
 
+  var $icon = document.createElement('i');
+  $icon.className = 'fas fa-pen nav';
+  $icon.setAttribute('data-view', 'entries');
+  $icon.addEventListener('click', getViewName);
+  $newRowTwo.appendChild($icon);
+
   var $newRowThree = document.createElement('div');
   $newRowThree.className = 'row';
   $newColumnTwo.appendChild($newRowThree);
@@ -117,3 +134,29 @@ function renderDOMContent() {
 }
 
 window.addEventListener('DOMContentLoaded', renderDOMContent);
+
+// ---------------Edit Entries Handler------------
+
+var targetJournalEntry = null;
+
+function journalListClickHandler(event) {
+  if (event.target.nodeName === 'I') {
+    targetJournalEntry = event.target.closest('li');
+    var targetEntryId = targetJournalEntry.getAttribute('id');
+    for (var i = 0; i < data.entries.length; i++) {
+      var eachDataEntry = data.entries[i];
+      if (Number(targetEntryId) === eachDataEntry.id) {
+        $imgElement.setAttribute('src', eachDataEntry.image);
+        $title.value = eachDataEntry.title;
+        $textarea.value = eachDataEntry.notes;
+        $photoUrlInput.value = eachDataEntry.image;
+
+        data.editing = eachDataEntry;
+      }
+    }
+  }
+}
+
+$journalList.addEventListener('click', journalListClickHandler);
+
+// -------------Edit Form Handler -------------------

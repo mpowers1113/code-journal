@@ -115,3 +115,8 @@ button {
 form {
   padding-bottom: 1rem;
 }
+
+.icon {
+  justify-content: space-between;
+  align-items: center;
+}
