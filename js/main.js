@@ -19,7 +19,6 @@ var $confirmModalOverlay = document.querySelector('.overlay');
 
 function deleteEntryHandler(event) {
   var deleteIndex = data.entries.findIndex(array => array.id === data.editing.id);
-  data.entries[deleteIndex] = data.editing;
   targetJournalEntry.remove();
   data.entries.splice(deleteIndex, 1);
   data.editing = null;
