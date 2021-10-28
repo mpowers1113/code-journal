@@ -52,7 +52,8 @@ header .container {
 
 header h4 {
   color: white;
-  padding: 1rem 0;
+
+  /* padding: 1rem 0; */
   margin: 0;
 }
 
@@ -176,4 +177,44 @@ form {
 
 .delete-entry-span {
   cursor: pointer;
+}
+
+#switch {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+#switch-label {
+  display: block;
+  width: 4rem;
+  height: 2rem;
+  background-color: #6c5a7e;
+  border-radius: 1.5rem;
+  position: relative;
+  cursor: pointer;
+  transition: 0.5s;
+  box-shadow: 0 0 20px #477a8550;
+  margin-bottom: 1.5rem;
+}
+
+#switch-label::after {
+  content: "";
+  width: 25px;
+  height: 25px;
+  background-color: #e8f5f7;
+  position: absolute;
+  border-radius: 15px;
+  top: 3px;
+  left: 5px;
+  transition: 0.5s;
+  background-image: url('../images/moon.png');
+  background-position: center;
+  background-size: 15px;
+  background-repeat: no-repeat;
+}
+
+#switch:checked + #switch-label::after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
 }

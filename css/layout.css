@@ -1,9 +1,8 @@
-.hidden {
-  display: none !important;
-}
-
-body {
-  background-color: #f0f0f0;
+:root {
+  --backgroundDark: rgb(32, 32, 32);
+  --textDark: rgb(230, 230, 230);
+  --listItemDark: rgb(49, 49, 49);
+  --inputBackgroundDark: rgb(211, 211, 211);
 }
 
 .container {
@@ -11,6 +10,62 @@ body {
   margin: 0 auto;
   padding: 0 1.5rem;
   background-color: #f0f0f0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.column-third {
+  flex-basis: calc(100% / 3);
+}
+
+body {
+  background-color: #f0f0f0;
+}
+
+body.dark-theme header {
+  background-color: var(--backgroundDark);
+}
+
+body.dark-theme .column {
+  background-color: var(--backgroundDark);
+  color: var(--textDark);
+}
+
+body.dark-theme {
+  color: var(--textDark);
+  background-color: var(--backgroundDark);
+}
+
+body.dark-theme ul {
+  color: var(--textDark);
+  background-color: var(--backgroundDark);
+}
+
+body.dark-theme .container {
+  background-color: var(--listItemDark);
+}
+
+body.dark-theme li {
+  background-color: var(--listItemDark);
+  color: var(--textDark);
+}
+
+body.dark-theme i {
+  color: var(--inputBackgroundDark);
+}
+
+body.dark-theme input {
+  background-color: var(--inputBackgroundDark);
+}
+
+body.dark-theme .header {
+  border-bottom: 2px solid var(--backgroundDark);
+}
+
+body.dark-theme textarea {
+  background-color: var(--inputBackgroundDark);
 }
 
 .row {

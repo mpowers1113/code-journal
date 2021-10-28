@@ -15,8 +15,15 @@ var $cancelButton = document.querySelector('.cancel');
 var $deleteEntrySpan = document.querySelector('.delete-entry-span');
 var $confirmModalOverlay = document.querySelector('.overlay');
 var $search = document.querySelector('#search');
+var $darkModeSwitch = document.querySelector('#switch');
 
 var $allJournalEntries = $journalList.childNodes;
+
+// --------------Dark Mode Toggle------------------
+
+$darkModeSwitch.addEventListener('click', function () {
+  document.body.classList.toggle('dark-theme');
+});
 
 // -------------Search Handler---------------------
 
