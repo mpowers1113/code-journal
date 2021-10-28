@@ -178,23 +178,18 @@ form {
 }
 
 .switch {
-  cursor: pointer;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  position: relative;
   width: 60px;
   height: 28px;
-  background-color: #e5e5e5;
+  background-color: #6b5580;
   border-radius: 1.5rem;
   padding: 0 2px;
-  transition: 0.5s;
-}
-
-.flip {
-  justify-content: flex-end;
 }
 
 .switch-ball {
+  transition: 0.5s;
+  top: 1px;
+  position: absolute;
   cursor: pointer;
   width: 25px;
   height: 25px;
@@ -207,7 +202,6 @@ form {
   box-shadow: 0 0 20px #477a8550;
 }
 
-#switch:checked + #switch-label::after {
-  left: calc(100% - 5px);
-  transform: translateX(-100%);
+.flip {
+  transform: translateX(31px);
 }
