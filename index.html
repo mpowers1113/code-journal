@@ -17,12 +17,14 @@
 <body>
   <header>
     <div class="container">
-      <div class="column-full">
-        <h4>Code Journal</h4>
+      <div class="row header">
+        <div class="column-half">
+          <h4>Code Journal</h4>
+        </div>
+        <div class="column-half">
+          <input type="text" id="search" placeholder="Search entries">
+        </div>
       </div>
-
-
-
     </div>
   </header>
   <main>
@@ -41,10 +43,8 @@
               <div class="row modal">
                 <button class="cancel">CANCEL</button><button class="confirm">CONFIRM</button>
               </div>
-
             </div>
           </div>
-
           <form action="">
             <div class="row">
               <div class="column-half">
@@ -78,7 +78,6 @@
             <div class="row button">
               <span class="delete-entry-span hidden">Delete Entry</span>
               <button type="submit" class="submit-button nav" data-view="entry-form">SAVE</button>
-
             </div>
           </form>
         </div>
@@ -91,16 +90,13 @@
           <button class="entries-button nav" data-view="entries">NEW</button>
         </div>
       </div>
-
       <div class="row" data-view="entries">
         <div class="column-full">
           <ul class="journal-list entries">
           </ul>
         </div>
       </div>
-
     </div>
-
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

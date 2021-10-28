@@ -14,6 +14,25 @@ var $deleteButton = document.querySelector('.confirm');
 var $cancelButton = document.querySelector('.cancel');
 var $deleteEntrySpan = document.querySelector('.delete-entry-span');
 var $confirmModalOverlay = document.querySelector('.overlay');
+var $search = document.querySelector('#search');
+
+var $allJournalEntries = $journalList.childNodes;
+
+// -------------Search Handler---------------------
+
+function searchEntryFilterHandler(event) {
+  var searchTerm = event.target.value;
+  for (var i = 1; i < $allJournalEntries.length; i++) {
+    var earchJournalEntry = $allJournalEntries[i];
+    if (earchJournalEntry.innerText.toLowerCase().includes(searchTerm)) {
+      earchJournalEntry.className = '';
+    } else {
+      earchJournalEntry.className = 'hidden';
+    }
+  }
+}
+
+$search.addEventListener('input', searchEntryFilterHandler);
 
 // ------------Delete Entry------------------------
 
@@ -70,6 +89,15 @@ function photoInputChangeHandler(event) {
 
 $photoUrlInput.addEventListener('input', photoInputChangeHandler);
 
+// ---------Current Date-------------------
+
+var today = new Date();
+var month = today.getMonth() + 1;
+var year = today.getFullYear();
+var day = today.getDate();
+
+var currentDate = `${month}/${day}/${year}`;
+
 // --------Form inputs---------------------
 
 function formSubmitHandler(event) {
@@ -78,6 +106,7 @@ function formSubmitHandler(event) {
     data.editing.title = $title.value;
     data.editing.notes = $textarea.value;
     data.editing.image = $photoUrlInput.value;
+    data.editing.date = currentDate;
     var editIndex = data.entries.findIndex(array => array.id === data.editing.id);
     data.entries[editIndex] = data.editing;
     targetJournalEntry.replaceWith(renderJournalEntries(data.editing));
@@ -85,11 +114,13 @@ function formSubmitHandler(event) {
 
   } else {
     $deleteEntrySpan.className = 'delete-entry-span hidden';
+
     var formSubmissionData = {
       id: data.nextEntryId,
       title: $title.value,
       notes: $textarea.value,
-      image: $photoUrlInput.value
+      image: $photoUrlInput.value,
+      date: currentDate.toString()
     };
     data.nextEntryId++;
     data.entries.unshift(formSubmissionData);
@@ -130,6 +161,11 @@ function renderJournalEntries(userData) {
   var $titleH1 = document.createElement('h1');
   $titleH1.textContent = userData.title;
   $newRowTwo.appendChild($titleH1);
+
+  var $dateSpan = document.createElement('span');
+  $dateSpan.className = 'date';
+  $dateSpan.textContent = userData.date;
+  $newRowTwo.appendChild($dateSpan);
 
   var $icon = document.createElement('i');
   $icon.className = 'fas fa-pen nav';
