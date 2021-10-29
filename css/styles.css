@@ -52,7 +52,6 @@ header .container {
 
 header h4 {
   color: white;
-  padding: 1rem 0;
   margin: 0;
 }
 
@@ -113,6 +112,10 @@ button {
 
 form {
   padding-bottom: 1rem;
+}
+
+i {
+  cursor: pointer;
 }
 
 .icon {
@@ -176,4 +179,34 @@ form {
 
 .delete-entry-span {
   cursor: pointer;
+}
+
+.switch {
+  cursor: pointer;
+  position: relative;
+  width: 60px;
+  height: 28px;
+  background-color: #6b5580;
+  border-radius: 1.5rem;
+  padding: 0 2px;
+}
+
+.switch-ball {
+  transition: 0.5s;
+  top: 1px;
+  position: absolute;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  border-radius: 15px;
+  background-image: url('../images/moon.png');
+  background-position: center;
+  background-size: 15px;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 20px #477a8550;
+}
+
+.flip {
+  transform: translateX(31px);
 }
